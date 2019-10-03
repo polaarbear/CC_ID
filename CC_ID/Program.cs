@@ -4,57 +4,77 @@ namespace CC_ID
 {
     class Program
     {
+        private static bool checkMoreNumbers = true;
         private static string ccNumber;
         private static int checkDigit = 0;
         private static string nonCheckFlipped;
         private static int[] preLuhnValues;
         private static int luhnSum = 0;
+        private static bool numberValid = true;
         
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter a credit card number to check.");
-           ccNumber = Console.ReadLine();
-            
-            if (ParseCheckAndFlip())
+            do
             {
-                if (ParseNonCheck())
+                CheckCardNumber();
+                PromptTryAgain();
+            }
+            while (checkMoreNumbers);
+
+            Console.WriteLine("Ok, see you!\nPress the any key to exit!");
+            Console.Read();
+        }
+
+        private static void CheckCardNumber()
+        {
+            Console.WriteLine("Enter a credit card number to check.");
+            ccNumber = Console.ReadLine();
+            String resultString = "";
+
+            ParseCheckAndFlip();
+            if (numberValid)
+            {
+                ParseNonCheck();
+                if (numberValid)
                 {
-                    luhnSum = SumNonCheck();
+                    SumNonCheck();
+
+                    if ((checkDigit + luhnSum) % 10 == 0)
+                    {
+                        resultString = "VALID, ";
+                    }
+                    else
+                    {
+                        numberValid = false;
+                        resultString = "INVALID, CHECKSUM FAILURE!";
+                    }
                 }
                 else
                 {
-                    Console.WriteLine("Failed to parse non-check digits");
+                    resultString = "INVALID, NON-NUMERIC CHECK DIGIT";
                 }
             }
             else
             {
-                Console.WriteLine("Failed to parse check digit");
+                resultString = "INVALID, NON-NUMERIC MAIN DIGIT";
             }
 
-
-            if ((luhnSum + checkDigit) % 10 == 0)
+            if (numberValid)
             {
-                string validationString = "VALID, " + GetCardIssuer() + ".";
-
-                Console.WriteLine(validationString);
-            }
-            else
-            {
-                Console.WriteLine("INVALID CARD!");
+                resultString += GetCardIssuer();
             }
 
-            Console.ReadKey();            
+            Console.WriteLine(resultString);
         }
 
-        private static bool ParseCheckAndFlip()
+        private static void ParseCheckAndFlip()
         {
             bool firstDigit = true;
-            bool parseSuccess = true;
             for (int value = ccNumber.Length - 1; value >= 0; value--)
             {
                 if (firstDigit)
                 {
-                    parseSuccess = int.TryParse(ccNumber[value].ToString(), out checkDigit);
+                    numberValid = int.TryParse(ccNumber[value].ToString(), out checkDigit);
                     firstDigit = false;
                 }
                 else
@@ -63,24 +83,17 @@ namespace CC_ID
                 }
 
             }
-            return parseSuccess;
         }
 
-        private static bool ParseNonCheck()
+        private static void ParseNonCheck()
         {
             int nonCheckDigits = nonCheckFlipped.Length;
             preLuhnValues = new int[nonCheckDigits];
-            bool parseSuccess = true;
 
             for (int i = 0; i < nonCheckDigits; i++)
             {
-                parseSuccess = int.TryParse(nonCheckFlipped[i].ToString(), out preLuhnValues[i]);
-                if (!parseSuccess)
-                {
-                    return parseSuccess;
-                }
+                numberValid = int.TryParse(nonCheckFlipped[i].ToString(), out preLuhnValues[i]);
             }
-            return parseSuccess;
         }
 
         private static int SumNonCheck()
@@ -150,6 +163,37 @@ namespace CC_ID
                 return "DISCOVER";
             }
             return "ISSUER UNKNOWN";
+        }
+
+        private static void PromptTryAgain()
+        {
+            Console.WriteLine("Check another card? Y/N");
+            char response = Console.ReadKey(true).KeyChar;
+
+            if (response == 'Y' || response == 'y')
+            {
+                ResetForm();
+            }
+            else if (response == 'N' || response == 'n')
+            {
+                checkMoreNumbers = false;
+            }
+            else
+            {
+                Console.WriteLine("Invalid response, try again.");
+                PromptTryAgain();
+            }
+        }
+
+        private static void ResetForm()
+        {
+            ccNumber = "";
+            checkDigit = 0;
+            nonCheckFlipped = "";
+            preLuhnValues = null;
+            luhnSum = 0;
+            numberValid = true;
+            Console.Clear();
         }
     }
 }

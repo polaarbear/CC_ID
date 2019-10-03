@@ -1,0 +1,10 @@
+C:\_dev\CC_ID\CC_ID\bin\Release\netcoreapp3.0\CC_ID.exe
+C:\_dev\CC_ID\CC_ID\bin\Release\netcoreapp3.0\CC_ID.deps.json
+C:\_dev\CC_ID\CC_ID\bin\Release\netcoreapp3.0\CC_ID.runtimeconfig.json
+C:\_dev\CC_ID\CC_ID\bin\Release\netcoreapp3.0\CC_ID.runtimeconfig.dev.json
+C:\_dev\CC_ID\CC_ID\bin\Release\netcoreapp3.0\CC_ID.dll
+C:\_dev\CC_ID\CC_ID\bin\Release\netcoreapp3.0\CC_ID.pdb
+C:\_dev\CC_ID\CC_ID\obj\Release\netcoreapp3.0\CC_ID.AssemblyInfoInputs.cache
+C:\_dev\CC_ID\CC_ID\obj\Release\netcoreapp3.0\CC_ID.AssemblyInfo.cs
+C:\_dev\CC_ID\CC_ID\obj\Release\netcoreapp3.0\CC_ID.dll
+C:\_dev\CC_ID\CC_ID\obj\Release\netcoreapp3.0\CC_ID.pdb
