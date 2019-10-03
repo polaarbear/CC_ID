@@ -1,0 +1,60 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\_dev\\CC_ID\\CC_ID\\CC_ID.csproj": {}
+  },
+  "projects": {
+    "C:\\_dev\\CC_ID\\CC_ID\\CC_ID.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\_dev\\CC_ID\\CC_ID\\CC_ID.csproj",
+        "projectName": "CC_ID",
+        "projectPath": "C:\\_dev\\CC_ID\\CC_ID\\CC_ID.csproj",
+        "packagesPath": "C:\\Users\\RadHatter\\.nuget\\packages\\",
+        "outputPath": "C:\\_dev\\CC_ID\\CC_ID\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\RadHatter\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.0": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
